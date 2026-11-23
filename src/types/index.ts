@@ -1,50 +1,50 @@
 /**
- * Gagnalíkan Kvitt. Sömu týpur verða notaðar í Supabase töflum og MCP servernum.
- * Dagsetningar eru geymdar sem ISO strengir (YYYY-MM-DD).
+ * Kvitt data model. The same types are used by the Supabase tables and the MCP server.
+ * Dates are stored as ISO strings (YYYY-MM-DD).
  */
 
-export interface Flokkur {
+export interface Category {
   id: string;
-  nafn: string;
+  name: string;
 }
 
-export interface Kvittun {
+export interface Receipt {
   id: string;
-  vara: string;
-  verslun: string;
-  kaupdagur: string;
-  /** Upphæð í krónum */
-  upphaed: number;
-  flokkurId: string | null;
-  skilafrestur: string | null;
-  abyrgdTil: string | null;
-  /** Slóð á mynd/PDF af kvittuninni í Supabase Storage */
-  myndUrl: string | null;
-  athugasemd?: string;
+  product: string;
+  store: string;
+  purchaseDate: string;
+  /** Amount in ISK */
+  amount: number;
+  categoryId: string | null;
+  returnDeadline: string | null;
+  warrantyUntil: string | null;
+  /** URL of the receipt image/PDF in Supabase Storage */
+  imageUrl: string | null;
+  note?: string;
 }
 
-export type AminningTegund = 'skilafrestur' | 'abyrgd';
+export type ReminderType = 'return' | 'warranty';
 
-export interface Aminning {
+export interface Reminder {
   id: string;
-  kvittunId: string;
-  /** Dagurinn sem á að minna á */
-  dagsetning: string;
-  tegund: AminningTegund;
+  receiptId: string;
+  /** The day the user should be reminded */
+  date: string;
+  type: ReminderType;
 }
 
-export interface Notandi {
+export interface User {
   id: string;
-  nafn: string;
-  netfang: string;
+  name: string;
+  email: string;
 }
 
-/** Það sem Claude API skilar eftir að hafa lesið mynd af kvittun */
-export interface SkonnudKvittun {
-  verslun: string | null;
-  vara: string | null;
-  kaupdagur: string | null;
-  upphaed: number | null;
-  skilafrestur: string | null;
-  abyrgdTil: string | null;
+/** What the Claude API returns after reading a photo of a receipt */
+export interface ScannedReceipt {
+  store: string | null;
+  product: string | null;
+  purchaseDate: string | null;
+  amount: number | null;
+  returnDeadline: string | null;
+  warrantyUntil: string | null;
 }

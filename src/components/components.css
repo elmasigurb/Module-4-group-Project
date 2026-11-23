@@ -1,10 +1,16 @@
-/* ---------- Skel ---------- */
+/* ==========================================================================
+   App shell
+   Mobile: header on top, content, fixed navigation bar at the bottom.
+   Desktop (≥ 900px): sidebar navigation on the left, content on the right.
+   ========================================================================== */
 .app-shell {
-  max-width: var(--max-width);
-  margin: 0 auto;
   min-height: 100dvh;
+}
+
+.app-content {
   display: flex;
   flex-direction: column;
+  min-height: 100dvh;
 }
 
 .app-main {
@@ -33,15 +39,14 @@
   background: var(--color-surface);
 }
 
-/* ---------- Navigation bar ---------- */
-.bottom-nav {
+/* ---------- Navigation (mobile: bottom bar) ---------- */
+.nav {
   position: fixed;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: var(--max-width);
-  height: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: calc(var(--nav-height) + env(safe-area-inset-bottom));
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
@@ -50,7 +55,11 @@
   border-top: 1px solid var(--color-border);
 }
 
-.bottom-nav__item {
+.nav__logo {
+  display: none;
+}
+
+.nav__item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,12 +68,12 @@
   color: var(--color-text-muted);
 }
 
-.bottom-nav__item.is-active {
+.nav__item.is-active {
   color: var(--color-text);
   font-weight: 600;
 }
 
-.bottom-nav__item--scan {
+.nav__item--scan {
   justify-self: center;
   width: 56px;
   height: 40px;
@@ -74,11 +83,12 @@
   color: var(--color-primary-contrast);
 }
 
-.bottom-nav__item--scan.is-active {
+.nav__item--scan.is-active {
   color: var(--color-primary-contrast);
 }
 
-.sr-only {
+/* The scan button only shows an icon on mobile (label stays for screen readers) */
+.nav__item--scan .nav__label {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -87,7 +97,101 @@
   white-space: nowrap;
 }
 
-/* ---------- Takkar ---------- */
+/* ---------- Desktop: sidebar ---------- */
+@media (min-width: 900px) {
+  body {
+    background: var(--color-bg-desktop);
+  }
+
+  .app-shell {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-1);
+    padding: var(--space-5) var(--space-4);
+    border-top: none;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .nav__logo {
+    order: -2;
+    display: block;
+    font-size: var(--text-lg);
+    padding: 0 var(--space-3) var(--space-5);
+  }
+
+  .nav__item {
+    flex-direction: row;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+  }
+
+  .nav__item:hover {
+    background: var(--color-surface);
+  }
+
+  .nav__item.is-active {
+    background: var(--color-surface);
+  }
+
+  /* Scan becomes a full-width primary button in the sidebar */
+  .nav__item--scan {
+    order: -1; /* place it right under the logo */
+    width: auto;
+    height: auto;
+    justify-self: auto;
+    justify-content: flex-start;
+    margin-bottom: var(--space-4);
+  }
+
+  .nav__item--scan:hover,
+  .nav__item--scan.is-active {
+    background: var(--color-primary);
+    opacity: 0.92;
+  }
+
+  .nav__item--scan .nav__label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+
+  .app-content {
+    background: var(--color-bg);
+  }
+
+  .app-main {
+    padding-bottom: var(--space-6);
+  }
+
+  /* Logo is in the sidebar, so the header only keeps the bell */
+  .app-header {
+    justify-content: flex-end;
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .app-header__logo {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+/* ---------- Buttons ---------- */
 .btn {
   display: flex;
   justify-content: center;
@@ -100,6 +204,11 @@
   font-size: var(--text-sm);
   font-weight: 600;
   cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 
 .btn--primary {
@@ -114,7 +223,26 @@
   border: 1px solid var(--color-border);
 }
 
-/* ---------- Kvittanaspjald ---------- */
+/* ---------- Back link (screen title with arrow) ---------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+}
+
+.back-link__title {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+@media (min-width: 900px) {
+  .back-link__title {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ---------- Receipt card ---------- */
 .receipt-card {
   display: flex;
   align-items: center;
@@ -122,11 +250,17 @@
   padding: var(--space-3);
   background: var(--color-surface);
   border-radius: var(--radius-sm);
+  transition: transform 0.15s;
+}
+
+.receipt-card:hover {
+  transform: translateY(-1px);
 }
 
 .receipt-card__thumb {
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   width: 36px;
   height: 44px;
   background: var(--color-bg);
@@ -142,6 +276,9 @@
 .receipt-card__title {
   font-size: var(--text-sm);
   font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .receipt-card__date {
@@ -155,9 +292,10 @@
   align-items: flex-end;
   gap: var(--space-2);
   font-size: var(--text-xs);
+  white-space: nowrap;
 }
 
-/* ---------- Flokkar ---------- */
+/* ---------- Category tile ---------- */
 .category-tile {
   display: flex;
   flex-direction: column;
@@ -174,7 +312,14 @@
   font-weight: 600;
 }
 
-/* ---------- Upplýsingaspjald ---------- */
+@media (min-width: 900px) {
+  .category-tile {
+    min-height: 96px;
+    padding: var(--space-4);
+  }
+}
+
+/* ---------- Info card ---------- */
 .info-card {
   display: flex;
   flex-direction: column;
@@ -202,7 +347,7 @@
   color: var(--color-text-muted);
 }
 
-/* ---------- Input reitir ---------- */
+/* ---------- Form fields ---------- */
 .field {
   display: flex;
   flex-direction: column;
@@ -215,6 +360,7 @@
 }
 
 .field__input {
+  width: 100%;
   padding: var(--space-3);
   background: var(--color-surface);
   border: 1px solid transparent;
@@ -238,26 +384,38 @@
 
 .search-box input {
   flex: 1;
+  min-width: 0;
   border: none;
   background: transparent;
   outline: none;
+  color: var(--color-text);
 }
 
-/* ---------- Skönnun ---------- */
+@media (min-width: 900px) {
+  .search-box {
+    max-width: 420px;
+  }
+}
+
+/* ---------- Scan frame ---------- */
 .scan-frame {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
   aspect-ratio: 3 / 4;
+  width: 100%;
+  max-height: 70dvh;
   padding: var(--space-5);
   background: var(--color-surface-strong);
   border-radius: var(--radius-md);
 }
 
 .scan-frame__inner {
+  flex: 1;
   display: grid;
   place-items: center;
   width: 100%;
-  height: 100%;
   border: 2px dashed var(--color-bg);
   border-radius: var(--radius-sm);
   color: var(--color-bg);
@@ -266,5 +424,4 @@
 .scan-frame__hint {
   text-align: center;
   font-size: var(--text-xs);
-  color: var(--color-text);
 }

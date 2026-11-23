@@ -1,15 +1,17 @@
 import { Outlet } from 'react-router';
 import Header from './Header';
-import BottomNav from './BottomNav';
+import Navigation from './Navigation';
 
 export default function AppLayout() {
   return (
     <div className="app-shell">
-      <Header />
-      <main className="app-main">
-        <Outlet />
-      </main>
-      <BottomNav />
+      <Navigation />
+      <div className="app-content">
+        <Header />
+        <main className="app-main">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }

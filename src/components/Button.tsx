@@ -5,7 +5,7 @@ type Variant = 'primary' | 'secondary';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
-  /** Ef `to` er gefið verður takkinn að hlekk */
+  /** If `to` is set, the button renders as a link */
   to?: string;
 }
 

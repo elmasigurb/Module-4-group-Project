@@ -1,55 +1,62 @@
-import type { Aminning, Flokkur, Kvittun, Notandi } from '../types';
+import type { Category, Receipt, Reminder, User } from '../types';
 
 /**
- * Gervigögn sem eru notuð þar til Supabase er tengt (áfangi 4).
+ * Mock data used until Supabase is connected (phase 4).
+ * Note: category names are shown in the UI, so they stay in Icelandic.
  */
 
-export const flokkar: Flokkur[] = [
-  { id: 'framkvaemdir', nafn: 'Framkvæmdir' },
-  { id: 'gardurinn', nafn: 'Garðurinn' },
-  { id: 'fri', nafn: 'Frí' },
+export const categories: Category[] = [
+  { id: 'renovation', name: 'Framkvæmdir' },
+  { id: 'garden', name: 'Garðurinn' },
+  { id: 'vacation', name: 'Frí' },
 ];
 
-export const kvittanir: Kvittun[] = [
+export const receipts: Receipt[] = [
   {
     id: '1',
-    vara: 'Borvél',
-    verslun: 'BYKO',
-    kaupdagur: '2026-08-11',
-    upphaed: 34490,
-    flokkurId: 'framkvaemdir',
-    skilafrestur: '2026-09-11',
-    abyrgdTil: '2027-08-11',
-    myndUrl: null,
+    product: 'Borvél',
+    store: 'BYKO',
+    purchaseDate: '2026-08-11',
+    amount: 34490,
+    categoryId: 'renovation',
+    returnDeadline: '2026-09-11',
+    warrantyUntil: '2027-08-11',
+    imageUrl: null,
   },
   {
     id: '2',
-    vara: 'Lampi',
-    verslun: 'IKEA',
-    kaupdagur: '2026-07-25',
-    upphaed: 15990,
-    flokkurId: null,
-    skilafrestur: '2026-11-25',
-    abyrgdTil: null,
-    myndUrl: null,
+    product: 'Lampi',
+    store: 'IKEA',
+    purchaseDate: '2026-07-25',
+    amount: 15990,
+    categoryId: null,
+    returnDeadline: '2026-11-25',
+    warrantyUntil: null,
+    imageUrl: null,
   },
 ];
 
-export const aminningar: Aminning[] = [
-  { id: 'a1', kvittunId: '2', dagsetning: '2026-11-18', tegund: 'skilafrestur' },
-  { id: 'a2', kvittunId: '1', dagsetning: '2027-08-04', tegund: 'abyrgd' },
+export const reminders: Reminder[] = [
+  { id: 'r1', receiptId: '2', date: '2026-11-18', type: 'return' },
+  { id: 'r2', receiptId: '1', date: '2027-08-04', type: 'warranty' },
 ];
 
-export const notandi: Notandi = {
+export const currentUser: User = {
   id: 'u1',
-  nafn: '',
-  netfang: '',
+  name: '',
+  email: '',
 };
 
-export function finnaKvittun(id: string | undefined) {
-  return kvittanir.find((k) => k.id === id);
+export function findReceipt(id: string | undefined) {
+  return receipts.find((r) => r.id === id);
 }
 
-export function finnaFlokk(id: string | null | undefined) {
-  return flokkar.find((f) => f.id === id);
+export function findCategory(id: string | null | undefined) {
+  return categories.find((c) => c.id === id);
+}
+
+/** Case-insensitive search on product and store */
+export function matchesQuery(receipt: Receipt, query: string) {
+  const q = query.trim().toLowerCase();
+  return !q || receipt.product.toLowerCase().includes(q) || receipt.store.toLowerCase().includes(q);
 }

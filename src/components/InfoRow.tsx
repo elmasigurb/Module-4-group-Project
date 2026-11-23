@@ -4,7 +4,7 @@ interface InfoRowProps {
   mono?: boolean;
 }
 
-/** Lína í upplýsingaspjaldi: merki til vinstri, gildi til hægri */
+/** A row in an info card: label on the left, value on the right */
 export default function InfoRow({ label, value, mono = true }: InfoRowProps) {
   return (
     <div className="info-row">

@@ -1,17 +1,17 @@
 # Dependencies
 node_modules
 
-# Build
+# Build output
 dist
 dist-ssr
 *.tsbuildinfo
 
-# Leynilyklar – ALDREI setja á GitHub
+# Secrets – NEVER commit
 .env
 .env.local
 .env.*.local
 
-# Kerfi og ritlar
+# OS and editors
 .DS_Store
 *.log
 .vscode/*

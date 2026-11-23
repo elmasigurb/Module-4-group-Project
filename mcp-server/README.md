@@ -1,19 +1,19 @@
 # kvitt-mcp
 
-Okkar eigin MCP server fyrir Kvitt (áfangi 7). Hann gerir Claude kleift að leita í og vinna með kvittanir notandans.
+Our own MCP server for Kvitt (phase 7). It lets Claude search and work with the user's receipts.
 
-**Staða:** ekki byrjað. Byggt eftir að appið getur vistað kvittanir í Supabase.
+**Status:** not started. Built after the app can save receipts to Supabase.
 
-## Fyrirhuguð tools
+## Planned tools
 
-| Tool | Hvað það gerir |
+| Tool | What it does |
 | --- | --- |
-| `leita_kvittana` | Leitar eftir verslun, vöru, dagsetningu eða flokki |
-| `saekja_kvittun` | Sækir allar upplýsingar um eina kvittun |
-| `abyrgdir_ad_renna_ut` | Kvittanir þar sem ábyrgð rennur út innan X daga |
-| `yfirlit_eftir_flokkum` | Leggur saman útgjöld í hverjum flokki |
-| `baeta_vid_aminningu` | Býr til áminningu fyrir kvittun |
+| `search_receipts` | Search by store, product, date or category |
+| `get_receipt` | Get all details for one receipt |
+| `get_expiring_warranties` | Receipts whose warranty expires within X days |
+| `get_spending_by_category` | Total spending per category |
+| `create_reminder` | Create a reminder for a receipt |
 
-## Tækni
+## Tech
 
-TypeScript, `@modelcontextprotocol/sdk`, stdio transport, zod. Tengist sama Supabase gagnagrunni og appið og notar týpurnar í `src/types`.
+TypeScript, `@modelcontextprotocol/sdk`, stdio transport, zod. Connects to the same Supabase database as the app and reuses the types in `src/types`.

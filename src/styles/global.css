@@ -31,11 +31,19 @@ p {
   margin: 0;
 }
 
+/* ---------- Page layout helpers ---------- */
 .page {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
   padding: var(--space-4);
+}
+
+.page--narrow {
+  max-width: var(--form-max-width);
 }
 
 .page-title {
@@ -74,6 +82,14 @@ p {
   gap: var(--space-3);
 }
 
+/* Buttons stacked on mobile, side by side from tablet up */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Fixed 3 columns (category tiles on mobile, like the Figma design) */
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -86,9 +102,47 @@ p {
   gap: var(--space-3);
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-weight: 700;
+/* Receipt list: 1 column on mobile, fills more columns on bigger screens */
+.receipt-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+/* Two-column layout on desktop (e.g. scan screen, receipt detail) */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+  }
+
+  .receipt-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .page {
+    gap: var(--space-5);
+    padding: var(--space-6);
+  }
+
+  .page-title {
+    font-size: var(--text-xl);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .split {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
 }

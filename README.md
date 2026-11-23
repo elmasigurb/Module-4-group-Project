@@ -1,57 +1,68 @@
 # Kvitt
 
-App sem heldur utan um kvittanir og ábyrgðir. Hópverkefni í Module 4.
+An app for keeping track of receipts, return deadlines and warranties. Module 4 group project.
 
-**Tækni:** React + TypeScript (Vite), React Router, Supabase, Claude API (vision) og okkar eigin MCP server (`/mcp-server`).
+The app UI is in Icelandic. Code, comments, commits and docs are in English.
 
-## Byrja
+**Tech:** React + TypeScript (Vite), React Router, Supabase, Claude API (vision) and our own MCP server (`/mcp-server`).
+
+## Getting started
 
 ```bash
 npm install
-cp .env.example .env   # fylla út gildin seinna (áfangi 4)
+cp .env.example .env   # fill in the values later (phase 4)
 npm run dev
 ```
 
-Opnið slóðina sem birtist (venjulega http://localhost:5173). Best er að skoða appið í síma-stærð (DevTools → Toggle device toolbar).
+Open the URL that appears (usually http://localhost:5173).
 
-## Skipanir
+The app is responsive:
 
-| Skipun | Hvað hún gerir |
+- **Mobile** (< 640px): single column with a bottom navigation bar, matching the Figma design
+- **Tablet** (≥ 640px): wider grids, buttons side by side
+- **Desktop** (≥ 900px): sidebar navigation and multi-column layouts
+
+Use DevTools → Toggle device toolbar to test the different sizes.
+
+## Scripts
+
+| Command | What it does |
 | --- | --- |
-| `npm run dev` | Keyrir appið |
-| `npm run build` | Athugar TypeScript og byggir |
-| `npm run lint` | Keyrir ESLint |
-| `npm run format` | Lagar uppsetningu kóða með Prettier |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check and build for production |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format code with Prettier |
 
-## Möppuskipulag
+## Project structure
 
 ```
 src/
-  components/   Endurnýtanlegir components (úr „Kvitt · Viðmótseiningar“)
-  pages/        Einn skjár = ein skrá (úr Hi fi í Figma)
-  data/         Gervigögn þar til Supabase er tengt
-  lib/          Hjálparföll (t.d. sníða krónur og dagsetningar)
-  styles/       Design tokens og almennt CSS
-  types/        Gagnalíkan (deilt með MCP servernum)
-mcp-server/     kvitt-mcp (áfangi 7)
+  components/   Reusable components (from "Kvitt · Viðmótseiningar" in Figma)
+  pages/        One file per screen (from the "Hi fi" page in Figma)
+  data/         Mock data until Supabase is connected
+  lib/          Helpers (e.g. formatting ISK amounts and dates)
+  styles/       Design tokens and global CSS
+  types/        Data model (shared with the MCP server)
+mcp-server/     kvitt-mcp (phase 7)
 ```
 
-## Skjáir og slóðir
+## Screens and routes
 
-| Skjár | Slóð |
-| --- | --- |
-| Heim | `/` |
-| Skanna kvittun | `/skanna` |
-| Yfirfara og vista | `/skanna/yfirfara` |
-| Mínar kvittanir (Skoða safn) | `/kvittanir` |
-| Skoða kvittun | `/kvittanir/:id` |
-| Kvittun · Pappírsforskoðun | `/kvittanir/:id/kvittun` |
-| Skoða flokk | `/flokkar/:id` |
-| Áminningar | `/aminningar` |
-| Mínar upplýsingar | `/eg` |
+| Screen (Figma name) | Component | Route |
+| --- | --- | --- |
+| Heim | `Home` | `/` |
+| Skanna kvittun | `ScanReceipt` | `/scan` |
+| Yfirfara og vista | `ReviewReceipt` | `/scan/review` |
+| Skoða safn / Mínar kvittanir | `Receipts` | `/receipts` |
+| Skoða kvittun | `ReceiptDetail` | `/receipts/:id` |
+| Kvittun · Pappírsforskoðun | `ReceiptPaperView` | `/receipts/:id/paper` |
+| Skoða flokk | `CategoryDetail` | `/categories/:id` |
+| Áminningar | `Reminders` | `/reminders` |
+| Mínar upplýsingar | `Profile` | `/profile` |
 
-## Vinnulag í hópnum
+## Team workflow
 
-- Hver vinnur á sinni grein: `git checkout -b feature/heiti`
-- Sameinað í `main` með pull request
-- `.env` fer **aldrei** á GitHub
+- Everyone works on their own branch: `git checkout -b feature/name`
+- Merge into `main` through pull requests
+- Commit messages in English
+- `.env` is **never** committed

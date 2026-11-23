@@ -1,32 +1,32 @@
 import { Route, Routes } from 'react-router';
 import AppLayout from './components/AppLayout';
-import Heim from './pages/Heim';
-import SkannaKvittun from './pages/SkannaKvittun';
-import YfirfaraOgVista from './pages/YfirfaraOgVista';
-import MinarKvittanir from './pages/MinarKvittanir';
-import SkodaKvittun from './pages/SkodaKvittun';
-import Pappirsforskodun from './pages/Pappirsforskodun';
-import SkodaFlokk from './pages/SkodaFlokk';
-import Aminningar from './pages/Aminningar';
-import MinarUpplysingar from './pages/MinarUpplysingar';
+import Home from './pages/Home';
+import ScanReceipt from './pages/ScanReceipt';
+import ReviewReceipt from './pages/ReviewReceipt';
+import Receipts from './pages/Receipts';
+import ReceiptDetail from './pages/ReceiptDetail';
+import ReceiptPaperView from './pages/ReceiptPaperView';
+import CategoryDetail from './pages/CategoryDetail';
+import Reminders from './pages/Reminders';
+import Profile from './pages/Profile';
 
 export default function App() {
   return (
     <Routes>
-      {/* Skjáir með haus og navigation bar */}
+      {/* Screens with header and navigation */}
       <Route element={<AppLayout />}>
-        <Route index element={<Heim />} />
-        <Route path="skanna" element={<SkannaKvittun />} />
-        <Route path="skanna/yfirfara" element={<YfirfaraOgVista />} />
-        <Route path="kvittanir" element={<MinarKvittanir />} />
-        <Route path="kvittanir/:id" element={<SkodaKvittun />} />
-        <Route path="flokkar/:id" element={<SkodaFlokk />} />
-        <Route path="aminningar" element={<Aminningar />} />
-        <Route path="eg" element={<MinarUpplysingar />} />
+        <Route index element={<Home />} />
+        <Route path="scan" element={<ScanReceipt />} />
+        <Route path="scan/review" element={<ReviewReceipt />} />
+        <Route path="receipts" element={<Receipts />} />
+        <Route path="receipts/:id" element={<ReceiptDetail />} />
+        <Route path="categories/:id" element={<CategoryDetail />} />
+        <Route path="reminders" element={<Reminders />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
 
-      {/* Heilskjár án navigation bar */}
-      <Route path="kvittanir/:id/kvittun" element={<Pappirsforskodun />} />
+      {/* Full screen, no navigation */}
+      <Route path="receipts/:id/paper" element={<ReceiptPaperView />} />
     </Routes>
   );
 }

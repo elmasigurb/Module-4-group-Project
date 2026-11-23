@@ -1,40 +1,48 @@
 /*
- * Design tokens fyrir Kvitt.
- * ATH: Gildin eru BRÁÐABIRGÐA, áætluð út frá skjáskoti af Figma.
- * Næsta skref: samstilla við Figma (Styleguide + Kvitt · Viðmótseiningar) með Figma MCP.
+ * Kvitt design tokens.
+ * NOTE: These values are TEMPORARY, estimated from a screenshot of the Figma file.
+ * Next step: sync with Figma (Styleguide + Kvitt · Viðmótseiningar) using the Figma MCP.
+ *
+ * Breakpoints (used in media queries, CSS variables can't be used there):
+ *   tablet  ≥ 640px  – wider grids
+ *   desktop ≥ 900px  – sidebar navigation, multi-column layouts
  */
 :root {
-  /* Litir */
+  /* Colors */
   --color-bg: #ffffff;
-  --color-surface: #ece6dc; /* ljósbeige spjöld og reitir */
-  --color-surface-strong: #c9bba7; /* dekkri beige (myndavélarammi) */
-  --color-primary: #8b6a3e; /* brúnn aðaltakki */
+  --color-bg-desktop: #f7f4ef; /* page background behind content on large screens */
+  --color-surface: #ece6dc; /* light beige cards and inputs */
+  --color-surface-strong: #c9bba7; /* darker beige (camera frame, category tiles) */
+  --color-primary: #8b6a3e; /* brown primary button */
   --color-primary-contrast: #ffffff;
   --color-text: #161313;
   --color-text-muted: #6f675e;
   --color-border: #ddd6cb;
 
-  /* Letur */
+  /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-md: 1rem;
   --text-lg: 1.25rem;
-  --text-xl: 1.5rem;
+  --text-xl: 1.75rem;
 
-  /* Bil */
+  /* Spacing */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
   --space-5: 24px;
   --space-6: 32px;
+  --space-7: 48px;
 
-  /* Rúnnun og annað */
+  /* Radius and layout */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --nav-height: 72px;
-  --max-width: 480px;
+  --sidebar-width: 240px;
+  --content-max-width: 1040px;
+  --form-max-width: 640px;
 }

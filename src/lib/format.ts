@@ -1,14 +1,14 @@
-/** 34490 → "34.490 kr." */
-export function kronur(upphaed: number): string {
-  const tala = Math.round(upphaed)
+/** 34490 → "34.490 kr." (Icelandic format) */
+export function formatISK(amount: number): string {
+  const digits = Math.round(amount)
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  return `${tala} kr.`;
+  return `${digits} kr.`;
 }
 
-/** "2026-08-11" → "11.08.2026" */
-export function dagsetning(iso: string | null | undefined): string {
+/** "2026-08-11" → "11.08.2026" (Icelandic format) */
+export function formatDate(iso: string | null | undefined): string {
   if (!iso) return '–';
-  const [ar, manudur, dagur] = iso.split('-');
-  return `${dagur}.${manudur}.${ar}`;
+  const [year, month, day] = iso.split('-');
+  return `${day}.${month}.${year}`;
 }

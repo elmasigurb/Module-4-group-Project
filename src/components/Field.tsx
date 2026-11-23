@@ -1,12 +1,13 @@
-import type { InputHTMLAttributes } from 'react';
+import { useId, type InputHTMLAttributes } from 'react';
 
 interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-/** Input reitur með merki fyrir ofan (sbr. „Yfirfara og vista“ og „Mínar upplýsingar“) */
+/** Text input with a label above it (used on the review and profile screens) */
 export default function Field({ label, id, ...props }: FieldProps) {
-  const fieldId = id ?? label.toLowerCase().replace(/\s+/g, '-');
+  const generatedId = useId();
+  const fieldId = id ?? generatedId;
   return (
     <label className="field" htmlFor={fieldId}>
       <span className="field__label">{label}</span>

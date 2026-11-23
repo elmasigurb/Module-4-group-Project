@@ -1,29 +1,35 @@
-# Kvitt – leiðbeiningar fyrir Claude
+# Kvitt – instructions for Claude
 
-Skólaverkefni (Module 4, hópverkefni). Notendurnir eru að læra, svo útskýrðu stuttlega hvað þú gerir og hvers vegna, og segðu skýrt frá þegar þau þurfa að gera eitthvað sjálf (búa til aðgang, setja inn lykla).
+School project (Module 4, group project). The team is learning, so briefly explain what you are doing and why, and say clearly when they need to do something themselves (create an account, add keys). The team usually talks to you in Icelandic, so reply in Icelandic.
 
-## Verkefnið
-App sem heldur utan um kvittanir og ábyrgðir. Allur texti í viðmótinu er á íslensku.
+## Language rules
+- **UI text (everything the user sees in the app): Icelandic.**
+- **Everything else: English.** Code, variable/function/file names, comments, commit messages, branch names, PR descriptions, README and other docs.
 
-## Kröfur
+## The project
+An app for keeping track of receipts, return deadlines and warranties.
+
+## Requirements
 - React + TypeScript (strict), Vite, React Router (`react-router` v7)
-- 2 API: **Claude API (vision)** til að lesa kvittanir og **Supabase** (gagnagrunnur, auth, storage)
-- 1 MCP server sem við smíðum sjálf: `/mcp-server` (kvitt-mcp)
+- 2 APIs: **Claude API (vision)** to read receipts, and **Supabase** (database, auth, storage)
+- 1 MCP server we build ourselves: `/mcp-server` (kvitt-mcp)
+- **Responsive:** must work on mobile and scale to desktop screens
 
-## Reglur
-- API lyklar fara ALDREI í frontend kóðann. Claude API er kallað í gegnum Supabase Edge Function. Leyndarmál fara í `.env` (er í .gitignore) og ný gildi í `.env.example`.
-- Týpurnar í `src/types` eru gagnalíkanið. Notið þær í appinu, Supabase og MCP servernum.
-- Litir, letur og bil koma úr `src/styles/tokens.css`. Engin harðkóðuð gildi í components.
-- Spyrjið áður en þið pushið á GitHub.
+## Rules
+- API keys must NEVER be in frontend code. The Claude API is called through a Supabase Edge Function. Secrets go in `.env` (in .gitignore) and new variables are added to `.env.example`.
+- `src/types` is the data model. Use it in the app, in Supabase and in the MCP server.
+- Colors, fonts and spacing come from `src/styles/tokens.css`. No hard-coded values in components.
+- Mobile first. Breakpoints: tablet ≥ 640px, desktop ≥ 900px (sidebar navigation). Every new screen must be checked at both mobile and desktop widths. Use the layout helpers in `global.css` (`.page`, `.page--narrow`, `.split`, `.receipt-list`, `.actions`).
+- Ask before pushing to GitHub.
 
-## Hönnun
-Figma skjalið „Group project 3 Main“, síðan **Hi fi**, og ramminn **Kvitt · Viðmótseiningar** fyrir components. Notið Figma MCP til að lesa hönnunina. Gildin í `tokens.css` eru bráðabirgða og þarf að samstilla við Figma.
+## Design
+Figma file "Group project 3 Main": the **Hi fi** page for screens and the **Kvitt · Viðmótseiningar** frame for components. Use the Figma MCP to read the design. The Figma design is mobile only; the desktop layout is our own extension of it. The values in `tokens.css` are temporary and need to be synced with Figma.
 
-## Áfangar
-1. ✅ Uppsetning: Vite, routing, möppuskipulag
-2. Hönnunarkerfi: samstilla tokens og components við Figma
-3. ✅ Skjáir með gervigögnum (`src/data/mockData.ts`), þarf að fínstilla við Figma
-4. Supabase: töflur (með Row Level Security), auth, vistun kvittana, myndageymsla
-5. Skönnun: Edge Function sem sendir mynd/PDF á Claude API og skilar `SkonnudKvittun` JSON
-6. Áminningar fyrir skilafresti og ábyrgðir
-7. MCP server (sjá `mcp-server/README.md`), prófa með MCP Inspector og tengja við Claude Desktop
+## Phases
+1. ✅ Setup: Vite, routing, project structure
+2. Design system: sync tokens and components with Figma
+3. ✅ Screens with mock data (`src/data/mockData.ts`), responsive. Needs fine-tuning against Figma
+4. Supabase: tables (with Row Level Security), auth, saving receipts, image storage
+5. Scanning: Edge Function that sends an image/PDF to the Claude API and returns `ScannedReceipt` JSON
+6. Reminders for return deadlines and warranties
+7. MCP server (see `mcp-server/README.md`), test with MCP Inspector and connect to Claude Desktop
