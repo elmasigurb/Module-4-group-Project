@@ -1,0 +1,40 @@
+/*
+ * Design tokens fyrir Kvitt.
+ * ATH: Gildin eru BRÁÐABIRGÐA, áætluð út frá skjáskoti af Figma.
+ * Næsta skref: samstilla við Figma (Styleguide + Kvitt · Viðmótseiningar) með Figma MCP.
+ */
+:root {
+  /* Litir */
+  --color-bg: #ffffff;
+  --color-surface: #ece6dc; /* ljósbeige spjöld og reitir */
+  --color-surface-strong: #c9bba7; /* dekkri beige (myndavélarammi) */
+  --color-primary: #8b6a3e; /* brúnn aðaltakki */
+  --color-primary-contrast: #ffffff;
+  --color-text: #161313;
+  --color-text-muted: #6f675e;
+  --color-border: #ddd6cb;
+
+  /* Letur */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+
+  /* Bil */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Rúnnun og annað */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --nav-height: 72px;
+  --max-width: 480px;
+}
