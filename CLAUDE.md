@@ -25,7 +25,7 @@ An app for keeping track of receipts, return deadlines and warranties.
 - Ask before pushing to GitHub.
 
 ## Design
-Figma file "Group project 3 Main": the **Hi fi** page for screens and the **Kvitt · Viðmótseiningar** frame for components. Use the Figma MCP to read the design. The Figma design is mobile only; the desktop layout is our own extension of it. The values in `tokens.css` are temporary and need to be synced with Figma.
+Figma file "Group project 3 Main": the **Hi fi** page for screens and the **Kvitt · Viðmótseiningar** frame for components. Use the Figma MCP to read the design (configured in `.mcp.json`; each team member logs in with `/mcp` → figma). The Figma design is mobile only; the desktop layout is our own extension of it. The values in `tokens.css` are temporary and need to be synced with Figma.
 
 ## Phases
 1. ✅ Setup: Vite, routing, project structure
