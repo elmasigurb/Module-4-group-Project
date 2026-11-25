@@ -1,0 +1,84 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from '@storybook/addon-docs/blocks';
+
+<Meta title="Kvitt/Design Tokens" />
+
+# Design tokens
+
+All colors, fonts and spacing are CSS variables in `src/styles/tokens.css`.
+This page reads the variables directly, so it always shows the current values.
+
+> **Note:** The values are temporary and still need to be synced with Figma
+> (Styleguide and **Kvitt · Viðmótseiningar**).
+
+## Colors
+
+<ColorPalette>
+  <ColorItem title="Background" subtitle="--color-bg / --color-bg-desktop" colors={{ bg: 'var(--color-bg)', 'bg-desktop': 'var(--color-bg-desktop)' }} />
+  <ColorItem title="Surface" subtitle="--color-surface / --color-surface-strong" colors={{ surface: 'var(--color-surface)', 'surface-strong': 'var(--color-surface-strong)' }} />
+  <ColorItem title="Primary" subtitle="--color-primary / --color-primary-contrast" colors={{ primary: 'var(--color-primary)', 'primary-contrast': 'var(--color-primary-contrast)' }} />
+  <ColorItem title="Text" subtitle="--color-text / --color-text-muted" colors={{ text: 'var(--color-text)', 'text-muted': 'var(--color-text-muted)' }} />
+  <ColorItem title="Border" subtitle="--color-border" colors={{ border: 'var(--color-border)' }} />
+</ColorPalette>
+
+## Typography
+
+### Sans: `--font-sans`
+
+Used for all normal text.
+
+<Typeset
+  fontFamily="var(--font-sans)"
+  fontWeight={400}
+  sizes={['var(--text-xs)', 'var(--text-sm)', 'var(--text-md)', 'var(--text-lg)', 'var(--text-xl)']}
+  sampleText="Kvittun frá BYKO · Ábyrgð til 11.08.2027"
+/>
+
+### Mono: `--font-mono`
+
+Used for numbers, dates and amounts (the `.mono` class).
+
+<Typeset
+  fontFamily="var(--font-mono)"
+  fontWeight={400}
+  sizes={['var(--text-xs)', 'var(--text-sm)', 'var(--text-md)']}
+  sampleText="34.490 kr. · 11.08.2026"
+/>
+
+| Token       | Use                                   |
+| ----------- | ------------------------------------- |
+| `--text-xs` | Small labels, dates, nav labels       |
+| `--text-sm` | Body text in cards, buttons, inputs   |
+| `--text-md` | Section titles, logo                  |
+| `--text-lg` | Page titles on mobile                 |
+| `--text-xl` | Page titles on desktop                |
+
+## Spacing
+
+The bars below are as wide as each spacing token.
+
+{['--space-1', '--space-2', '--space-3', '--space-4', '--space-5', '--space-6', '--space-7'].map((token) => (
+  <div key={token} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)', marginBottom: 'var(--space-2)' }}>
+    <code style={{ width: '7rem' }}>{token}</code>
+    <div style={{ width: `var(${token})`, height: 'var(--space-4)', background: 'var(--color-primary)', borderRadius: 'var(--radius-sm)' }} />
+  </div>
+))}
+
+## Radius
+
+{['--radius-sm', '--radius-md', '--radius-lg'].map((token) => (
+  <div key={token} style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-2)', marginRight: 'var(--space-5)' }}>
+    <div style={{ width: 'var(--space-7)', height: 'var(--space-7)', background: 'var(--color-surface-strong)', borderRadius: `var(${token})` }} />
+    <code>{token}</code>
+  </div>
+))}
+
+## Layout
+
+| Token                 | Use                                        |
+| --------------------- | ------------------------------------------ |
+| `--nav-height`        | Height of the bottom navigation on mobile  |
+| `--sidebar-width`     | Width of the sidebar on desktop (≥ 900px)  |
+| `--content-max-width` | Max width of page content                  |
+| `--form-max-width`    | Max width of forms (`.page--narrow`)       |
+
+Breakpoints can't be CSS variables in media queries, so they are fixed: **tablet ≥ 640px**, **desktop ≥ 900px**.

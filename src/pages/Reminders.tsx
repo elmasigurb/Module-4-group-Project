@@ -1,8 +1,7 @@
 import { Link } from 'react-router';
-import Icon from '../components/Icon';
-import InfoRow from '../components/InfoRow';
 import { findReceipt, reminders } from '../data/mockData';
 import { formatDate } from '../lib/format';
+import { Icon, InfoRow } from '../components/ui';
 
 /** "Áminningar": upcoming return-deadline and warranty reminders */
 export default function Reminders() {

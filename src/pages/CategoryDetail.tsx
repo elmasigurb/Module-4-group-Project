@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import BackLink from '../components/BackLink';
-import ReceiptCard from '../components/ReceiptCard';
-import SearchBox from '../components/SearchBox';
 import { findCategory, matchesQuery, receipts } from '../data/mockData';
+import { BackLink, ReceiptCard, SearchBox } from '../components/ui';
 
 /** "Skoða flokk": receipts in one category */
 export default function CategoryDetail() {

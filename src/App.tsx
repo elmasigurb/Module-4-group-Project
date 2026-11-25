@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router';
-import AppLayout from './components/AppLayout';
+import AppLayout from './components/layout/AppLayout';
 import Home from './pages/Home';
 import ScanReceipt from './pages/ScanReceipt';
 import ReviewReceipt from './pages/ReviewReceipt';

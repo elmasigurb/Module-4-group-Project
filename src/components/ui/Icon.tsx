@@ -1,13 +1,6 @@
-export type IconName =
-  | 'home'
-  | 'receipt'
-  | 'camera'
-  | 'bell'
-  | 'user'
-  | 'folder'
-  | 'back'
-  | 'forward'
-  | 'search';
+import type { IconName } from './iconNames';
+
+export type { IconName };
 
 const paths: Record<IconName, string> = {
   home: 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',

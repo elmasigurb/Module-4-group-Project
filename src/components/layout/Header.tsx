@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import Icon from './Icon';
+import Icon from '../ui/Icon';
 
 /** Top bar on mobile. On desktop the logo moves to the sidebar (see Navigation). */
 export default function Header() {

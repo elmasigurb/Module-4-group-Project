@@ -20,6 +20,8 @@ An app for keeping track of receipts, return deadlines and warranties.
 - `src/types` is the data model. Use it in the app, in Supabase and in the MCP server.
 - Colors, fonts and spacing come from `src/styles/tokens.css`. No hard-coded values in components.
 - Mobile first. Breakpoints: tablet ≥ 640px, desktop ≥ 900px (sidebar navigation). Every new screen must be checked at both mobile and desktop widths. Use the layout helpers in `global.css` (`.page`, `.page--narrow`, `.split`, `.receipt-list`, `.actions`).
+- Components are split into `src/components/ui/` (reusable building blocks, exported from `ui/index.ts`) and `src/components/layout/` (AppLayout, Header, Navigation). Pages import from `../components/ui`.
+- **Every new component in `ui/` gets a story** next to it (`ui/MyComponent.stories.tsx`) with `tags: ['autodocs']` and data from `src/data/mockData.ts`. Update the story when the component changes. Check with `npm run storybook` and `npx vitest --project storybook run`.
 - Ask before pushing to GitHub.
 
 ## Design
@@ -27,7 +29,7 @@ Figma file "Group project 3 Main": the **Hi fi** page for screens and the **Kvit
 
 ## Phases
 1. ✅ Setup: Vite, routing, project structure
-2. Design system: sync tokens and components with Figma
+2. Design system: Storybook component library set up (`npm run storybook`). Still need to sync tokens and components with Figma
 3. ✅ Screens with mock data (`src/data/mockData.ts`), responsive. Needs fine-tuning against Figma
 4. Supabase: tables (with Row Level Security), auth, saving receipts, image storage
 5. Scanning: Edge Function that sends an image/PDF to the Claude API and returns `ScannedReceipt` JSON

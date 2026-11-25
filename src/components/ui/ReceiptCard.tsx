@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
-import type { Receipt } from '../types';
-import { formatDate, formatISK } from '../lib/format';
+import type { Receipt } from '../../types';
+import { formatDate, formatISK } from '../../lib/format';
 import Icon from './Icon';
 
 export default function ReceiptCard({ receipt }: { receipt: Receipt }) {

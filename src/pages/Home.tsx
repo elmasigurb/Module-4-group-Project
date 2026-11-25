@@ -1,8 +1,6 @@
 import { Link } from 'react-router';
-import Button from '../components/Button';
-import CategoryTile from '../components/CategoryTile';
-import ReceiptCard from '../components/ReceiptCard';
 import { receipts } from '../data/mockData';
+import { Button, CategoryTile, ReceiptCard } from '../components/ui';
 
 export default function Home() {
   const recent = [...receipts]

@@ -1,9 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
-import BackLink from '../components/BackLink';
-import Button from '../components/Button';
-import Field from '../components/Field';
 import { categories } from '../data/mockData';
+import { BackLink, Button, Field } from '../components/ui';
 
 /** "Yfirfara og vista": the user checks the scanned data before saving */
 export default function ReviewReceipt() {

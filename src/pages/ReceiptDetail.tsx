@@ -1,9 +1,7 @@
 import { useParams } from 'react-router';
-import BackLink from '../components/BackLink';
-import Button from '../components/Button';
-import InfoRow from '../components/InfoRow';
 import { findCategory, findReceipt } from '../data/mockData';
 import { formatDate, formatISK } from '../lib/format';
+import { BackLink, Button, InfoRow } from '../components/ui';
 
 /** "Skoða kvittun" */
 export default function ReceiptDetail() {

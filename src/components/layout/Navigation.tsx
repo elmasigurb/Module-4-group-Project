@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router';
-import Icon, { type IconName } from './Icon';
+import Icon, { type IconName } from '../ui/Icon';
 
 interface NavItem {
   to: string;
