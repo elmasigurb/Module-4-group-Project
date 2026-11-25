@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import CategoryTile from '../components/CategoryTile';
-import ReceiptCard from '../components/ReceiptCard';
-import SearchBox from '../components/SearchBox';
 import { categories, matchesQuery, receipts } from '../data/mockData';
+import { CategoryTile, ReceiptCard, SearchBox } from '../components/ui';
 
 /** "Mínar kvittanir" / "Skoða safn": all receipts with search and categories */
 export default function Receipts() {
@@ -26,7 +24,7 @@ export default function Receipts() {
           <ReceiptCard key={r.id} receipt={r} />
         ))}
       </div>
-      {results.length === 0 && <p className="page-subtitle">Engar kvittanir fundust.</p>}
+      {results.length === 0 && <p className="empty-state">Engar kvittanir fundust.</p>}
     </div>
   );
 }

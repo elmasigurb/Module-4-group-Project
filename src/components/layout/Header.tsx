@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import Icon from './Icon';
+import Icon from '../ui/Icon';
 
 /** Top bar on mobile. On desktop the logo moves to the sidebar (see Navigation). */
 export default function Header() {
@@ -9,7 +9,7 @@ export default function Header() {
         Kvitt
       </Link>
       <Link to="/reminders" className="icon-button" aria-label="Áminningar">
-        <Icon name="bell" size={18} />
+        <Icon name="bell" size={22} />
       </Link>
     </header>
   );

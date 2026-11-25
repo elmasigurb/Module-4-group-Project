@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
-import Button from '../components/Button';
 import { findReceipt } from '../data/mockData';
 import { formatDate, formatISK } from '../lib/format';
+import { Button } from '../components/ui';
 import './ReceiptPaperView.css';
 
 /** "Kvittun · Pappírsforskoðun": shows the receipt as it looks on paper */

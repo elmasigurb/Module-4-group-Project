@@ -1,9 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
-import BackLink from '../components/BackLink';
-import Button from '../components/Button';
-import Field from '../components/Field';
 import { categories } from '../data/mockData';
+import { BackLink, Button, Field, PaperThumbnail } from '../components/ui';
 
 /** "Yfirfara og vista": the user checks the scanned data before saving */
 export default function ReviewReceipt() {
@@ -34,9 +32,12 @@ export default function ReviewReceipt() {
   return (
     <form className="page page--narrow" onSubmit={save}>
       <BackLink to="/scan" title="Yfirfara og vista" />
-      <Link to="/scan" className="link-muted">
-        Skipta um mynd
-      </Link>
+      <div className="thumb-row">
+        <PaperThumbnail />
+        <Link to="/scan" className="link-muted">
+          Skipta um mynd
+        </Link>
+      </div>
 
       <Field label="Vöruheiti" value={form.product} onChange={update('product')} />
       <Field label="Verslun" value={form.store} onChange={update('store')} />
@@ -45,12 +46,14 @@ export default function ReviewReceipt() {
         <Field
           label="Kaupdagur"
           type="date"
+          mono
           value={form.purchaseDate}
           onChange={update('purchaseDate')}
         />
         <Field
           label="Upphæð (kr.)"
           inputMode="numeric"
+          mono
           value={form.amount}
           onChange={update('amount')}
         />
@@ -72,12 +75,14 @@ export default function ReviewReceipt() {
         <Field
           label="Skilafrestur"
           type="date"
+          mono
           value={form.returnDeadline}
           onChange={update('returnDeadline')}
         />
         <Field
           label="Ábyrgð til"
           type="date"
+          mono
           value={form.warrantyUntil}
           onChange={update('warrantyUntil')}
         />

@@ -1,8 +1,6 @@
 import { Link } from 'react-router';
-import Button from '../components/Button';
-import CategoryTile from '../components/CategoryTile';
-import ReceiptCard from '../components/ReceiptCard';
 import { receipts } from '../data/mockData';
+import { Button, CategoryTile, ReceiptCard } from '../components/ui';
 
 export default function Home() {
   const recent = [...receipts]
@@ -13,7 +11,7 @@ export default function Home() {
     <div className="page">
       <div>
         <h1 className="page-title">Kvittanirnar þínar</h1>
-        <p className="page-subtitle">Geymdu allar kvittanirnar á einum stað</p>
+        <p className="page-subtitle">Geymdu allar kvittanirnar á einum stað.</p>
       </div>
 
       <div className="actions">

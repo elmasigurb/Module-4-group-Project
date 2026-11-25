@@ -1,8 +1,6 @@
 import { useRef, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router';
-import BackLink from '../components/BackLink';
-import Button from '../components/Button';
-import Icon from '../components/Icon';
+import { BackLink, Button, Icon } from '../components/ui';
 
 export default function ScanReceipt() {
   const navigate = useNavigate();

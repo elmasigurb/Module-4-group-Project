@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import Button from '../components/Button';
-import CategoryTile from '../components/CategoryTile';
-import Field from '../components/Field';
 import { categories, currentUser } from '../data/mockData';
+import { Button, CategoryTile, Field } from '../components/ui';
 
 /** "Mínar upplýsingar": user details and categories */
 export default function Profile() {
@@ -16,12 +14,14 @@ export default function Profile() {
 
       <Field
         label="Nafn"
+        size="compact"
         placeholder="Nafnið þitt"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <Field
         label="Netfang"
+        size="compact"
         type="email"
         placeholder="Netfangið þitt"
         value={email}

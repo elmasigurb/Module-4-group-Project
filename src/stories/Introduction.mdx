@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Kvitt/Introduction" />
+
+# Kvitt component library
+
+**Kvitt** is an app that keeps track of receipts, return deadlines and warranties.
+You take a photo of a receipt, Claude reads it, and Kvitt reminds you before the return deadline
+or the warranty runs out.
+
+This Storybook shows every reusable component in the app on its own, with mock data from
+`src/data/mockData.ts`. All text shown in the UI is in Icelandic.
+
+## Where things live
+
+| Folder                          | What it contains                                                              |
+| ------------------------------- | ----------------------------------------------------------------------------- |
+| `src/components/ui`             | Small reusable components (Button, Field, ReceiptCard …). Shown under **UI**. |
+| `src/components/layout`         | The app shell: AppLayout, Header and Navigation. Shown under **Layout**.      |
+| `src/styles/tokens.css`         | Design tokens: colors, fonts, spacing. See **Design Tokens**.                 |
+| `src/components/components.css` | Styles for all components (BEM-style class names).                            |
+
+## Using components
+
+Import UI components from the barrel file instead of individual files:
+
+```tsx
+import { Button, Field, ReceiptCard } from '../components/ui';
+import { receipts } from '../data/mockData';
+
+export default function Example() {
+  return (
+    <div className="stack">
+      <Field label="Verslun" defaultValue="BYKO" />
+      <ReceiptCard receipt={receipts[0]} />
+      <Button to="/scan">Skanna kvittun</Button>
+    </div>
+  );
+}
+```
+
+Some things to know:
+
+- **Links:** `Button` (with `to`), `CategoryTile`, `ReceiptCard` and `BackLink` render React Router links,
+  so they must be inside a router. In Storybook this is handled by a `MemoryRouter` decorator in
+  `.storybook/preview.tsx`.
+- **Styling:** components use class names from `components.css`. Colors, fonts and spacing always come
+  from the CSS variables in `tokens.css`. Never hard-code values in a component.
+- **Layout helpers** such as `.stack`, `.grid-3` and `.actions` are defined in `src/styles/global.css`.
+
+## Adding a new component
+
+1. Create the component in `src/components/ui/MyComponent.tsx`.
+2. Export it from `src/components/ui/index.ts`.
+3. Write a story next to it: `src/components/ui/MyComponent.stories.tsx` with `tags: ['autodocs']`.
+   Every component in `ui/` must have a story.
+4. Run `npm run storybook` and check it in the browser.
+
+## Useful commands
+
+| Command                              | What it does                                       |
+| ------------------------------------ | -------------------------------------------------- |
+| `npm run storybook`                  | Starts Storybook on http://localhost:6006          |
+| `npm run build-storybook`            | Builds a static Storybook into `storybook-static`  |
+| `npx vitest --project storybook run` | Runs all stories as tests (incl. `play` functions) |
+
+The design comes from the Figma file „Group project 3 Main“ (page **Hi fi**, frame **Kvitt · Viðmótseiningar**).
