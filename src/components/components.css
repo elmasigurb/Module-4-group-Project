@@ -505,7 +505,14 @@
 
 .field--compact .field__input {
   height: var(--input-height-compact);
-  font-size: var(--text-sm);
+  /* 16px on phones: iOS Safari zooms in on inputs with text smaller than 16px */
+  font-size: var(--text-md);
+}
+
+@media (min-width: 640px) {
+  .field--compact .field__input {
+    font-size: var(--text-sm);
+  }
 }
 
 .field--mono .field__input {
