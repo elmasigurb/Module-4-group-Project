@@ -24,7 +24,7 @@ export default function Receipts() {
           <ReceiptCard key={r.id} receipt={r} />
         ))}
       </div>
-      {results.length === 0 && <p className="page-subtitle">Engar kvittanir fundust.</p>}
+      {results.length === 0 && <p className="empty-state">Engar kvittanir fundust.</p>}
     </div>
   );
 }

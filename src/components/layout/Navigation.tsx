@@ -40,7 +40,7 @@ export default function Navigation() {
               .trim()
           }
         >
-          <Icon name={item.icon} size={item.isScan ? 22 : 18} />
+          <Icon name={item.icon} size={22} />
           <span className="nav__label">{item.label}</span>
         </NavLink>
       ))}

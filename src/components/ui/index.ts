@@ -10,5 +10,7 @@ export { default as Field } from './Field';
 export { default as Icon } from './Icon';
 export { iconNames, type IconName } from './iconNames';
 export { default as InfoRow } from './InfoRow';
+export { default as PaperThumbnail } from './PaperThumbnail';
 export { default as ReceiptCard } from './ReceiptCard';
+export { default as ReminderCard } from './ReminderCard';
 export { default as SearchBox } from './SearchBox';

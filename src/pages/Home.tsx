@@ -11,7 +11,7 @@ export default function Home() {
     <div className="page">
       <div>
         <h1 className="page-title">Kvittanirnar þínar</h1>
-        <p className="page-subtitle">Geymdu allar kvittanirnar á einum stað</p>
+        <p className="page-subtitle">Geymdu allar kvittanirnar á einum stað.</p>
       </div>
 
       <div className="actions">

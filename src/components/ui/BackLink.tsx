@@ -7,10 +7,13 @@ interface BackLinkProps {
   title: string;
 }
 
+/** Back arrow (44 × 44 touch target) followed by the screen title */
 export default function BackLink({ to, title }: BackLinkProps) {
   return (
     <Link to={to} className="back-link">
-      <Icon name="back" size={16} />
+      <span className="back-link__arrow">
+        <Icon name="back" size={22} />
+      </span>
       <h1 className="back-link__title">{title}</h1>
     </Link>
   );

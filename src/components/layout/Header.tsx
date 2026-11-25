@@ -9,7 +9,7 @@ export default function Header() {
         Kvitt
       </Link>
       <Link to="/reminders" className="icon-button" aria-label="Áminningar">
-        <Icon name="bell" size={18} />
+        <Icon name="bell" size={22} />
       </Link>
     </header>
   );

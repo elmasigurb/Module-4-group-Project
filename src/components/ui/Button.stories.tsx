@@ -49,13 +49,14 @@ export const AsLink: Story = {
 
 /**
  * Checks that the global CSS (tokens.css + components.css) is loaded in Storybook.
- * `.btn--primary` uses `--color-primary` (#8b6a3e). Update this value if the token changes.
+ * `.btn--primary` uses `--color-primary` (#a57e4f) with dark text (`--color-primary-contrast`, #171714). Update this value if the token changes.
  */
 export const CssCheck: Story = {
   args: { children: 'Litapróf' },
   tags: ['!autodocs'],
   play: async ({ canvas }) => {
     const button = canvas.getByRole('button', { name: 'Litapróf' });
-    await expect(getComputedStyle(button).backgroundColor).toBe('rgb(139, 106, 62)');
+    await expect(getComputedStyle(button).backgroundColor).toBe('rgb(165, 126, 79)');
+    await expect(getComputedStyle(button).color).toBe('rgb(23, 23, 20)');
   },
 };

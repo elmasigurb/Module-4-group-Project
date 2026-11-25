@@ -1,7 +1,8 @@
 /*
  * Kvitt design tokens.
- * NOTE: These values are TEMPORARY, estimated from a screenshot of the Figma file.
- * Next step: sync with Figma (Styleguide + Kvitt · Viðmótseiningar) using the Figma MCP.
+ * Synced with the Figma file "Group project 3 Main" (Hi fi page and the
+ * "Kvitt · Viðmótseiningar" components). Figma has no variables, so the values
+ * are read directly from the components.
  *
  * Breakpoints (used in media queries, CSS variables can't be used there):
  *   tablet  ≥ 640px  – wider grids
@@ -10,23 +11,32 @@
 :root {
   /* Colors */
   --color-bg: #ffffff;
-  --color-bg-desktop: #f7f4ef; /* page background behind content on large screens */
-  --color-surface: #ece6dc; /* light beige cards and inputs */
-  --color-surface-strong: #c9bba7; /* darker beige (camera frame, category tiles) */
-  --color-primary: #8b6a3e; /* brown primary button */
-  --color-primary-contrast: #ffffff;
-  --color-text: #161313;
-  --color-text-muted: #6f675e;
-  --color-border: #ddd6cb;
+  --color-bg-desktop: #f7f4ef; /* page background behind content on large screens (our own) */
+  --color-surface: #f3efe9; /* light beige cards, inputs, active nav item */
+  --color-surface-strong: #d1c7ba; /* darker beige (folder tiles, camera frame) */
+  --color-primary: #a57e4f; /* brown primary button and scan button */
+  --color-primary-contrast: #171714; /* dark text on primary (passes WCAG AA, white does not) */
+  --color-text: #292720;
+  --color-text-muted: #696257;
+  --color-border: #ddd5c9;
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-md: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.75rem;
+  --font-mono: 'Fira Code', ui-monospace, 'SF Mono', Menlo, monospace;
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-md: 1rem; /* 16px */
+  --text-lg: 1.5rem; /* 24px */
+  --text-xl: 2rem; /* 32px */
+  --leading-xs: 1rem; /* 16px */
+  --leading-sm: 1.25rem; /* 20px */
+  --leading-md: 1.5rem; /* 24px */
+  --leading-lg: 2rem; /* 32px */
+  --leading-xl: 2.5rem; /* 40px */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --tracking-logo: -1.5px;
 
   /* Spacing */
   --space-1: 4px;
@@ -36,12 +46,38 @@
   --space-5: 24px;
   --space-6: 32px;
   --space-7: 48px;
+  --page-gutter: 24px; /* side padding of the content on mobile */
+  --inset-field: 14px; /* horizontal padding inside inputs and the search box */
+  --inset-card: 18px; /* padding of info and reminder cards */
 
-  /* Radius and layout */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --nav-height: 72px;
+  /* Radius */
+  --radius-xs: 3px; /* paper thumbnail */
+  --radius-sm: 6px; /* folder tab, small elements */
+  --radius-md: 10px; /* inputs */
+  --radius-lg: 12px; /* folder tiles, search box, nav items */
+  --radius-button: 14px;
+  --radius-card: 16px; /* receipt rows, info and reminder cards */
+  --radius-full: 999px;
+
+  /* Sizes */
+  --control-height: 52px; /* buttons */
+  --input-height: 44px;
+  --input-height-compact: 40px;
+  --search-height: 48px;
+  --touch-target: 44px;
+  --icon-sm: 18px;
+  --icon-md: 22px;
+  --thumb-width: 44px; /* paper thumbnail */
+  --thumb-height: 62px;
+  --tile-height: 82px; /* folder tile */
+  --tile-height-desktop: 100px;
+  --folder-tab-width: 64px;
+  --folder-tab-height: 22px;
+  --folder-tab-offset: 6px; /* how far the tab sticks out above the tile */
+  --gap-label: 6px; /* between a label and its value */
+
+  /* Layout */
+  --nav-height: 70px;
   --sidebar-width: 240px;
   --content-max-width: 1040px;
   --form-max-width: 640px;

@@ -7,6 +7,8 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
   color: var(--color-text);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
@@ -39,7 +41,7 @@ p {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: var(--space-4);
+  padding: var(--space-2) var(--page-gutter) var(--space-3);
 }
 
 .page--narrow {
@@ -48,12 +50,14 @@ p {
 
 .page-title {
   font-size: var(--text-lg);
-  font-weight: 700;
+  line-height: var(--leading-lg);
+  font-weight: var(--weight-semibold);
 }
 
 .page-subtitle {
+  margin-top: var(--space-1);
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  line-height: var(--leading-sm);
 }
 
 .section-header {
@@ -64,10 +68,17 @@ p {
 
 .section-title {
   font-size: var(--text-md);
-  font-weight: 700;
+  line-height: var(--leading-md);
+  font-weight: var(--weight-semibold);
 }
 
 .link-muted {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text);
+}
+
+.empty-state {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
@@ -86,7 +97,7 @@ p {
 .actions {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 /* Fixed 3 columns (category tiles on mobile, like the Figma design) */
@@ -120,6 +131,11 @@ p {
 @media (min-width: 640px) {
   .actions {
     flex-direction: row;
+    align-items: center;
+  }
+
+  .actions > * {
+    flex: 1;
   }
 
   .receipt-list {
@@ -135,6 +151,7 @@ p {
 
   .page-title {
     font-size: var(--text-xl);
+    line-height: var(--leading-xl);
   }
 
   .grid-3 {

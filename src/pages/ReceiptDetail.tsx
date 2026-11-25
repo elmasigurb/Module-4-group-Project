@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { findCategory, findReceipt } from '../data/mockData';
 import { formatDate, formatISK } from '../lib/format';
-import { BackLink, Button, InfoRow } from '../components/ui';
+import { BackLink, Button, InfoRow, PaperThumbnail } from '../components/ui';
 
 /** "Skoða kvittun" */
 export default function ReceiptDetail() {
@@ -46,9 +46,12 @@ export default function ReceiptDetail() {
       </div>
 
       <div className="actions">
-        <Button to={`/receipts/${receipt.id}/paper`} variant="secondary">
-          Opna kvittun
-        </Button>
+        <div className="thumb-row">
+          <PaperThumbnail />
+          <Button to={`/receipts/${receipt.id}/paper`} variant="secondary">
+            Opna kvittun
+          </Button>
+        </div>
         <Button>Breyta upplýsingum</Button>
       </div>
     </div>

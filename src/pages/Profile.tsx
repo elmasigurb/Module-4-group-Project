@@ -14,12 +14,14 @@ export default function Profile() {
 
       <Field
         label="Nafn"
+        size="compact"
         placeholder="Nafnið þitt"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <Field
         label="Netfang"
+        size="compact"
         type="email"
         placeholder="Netfangið þitt"
         value={email}

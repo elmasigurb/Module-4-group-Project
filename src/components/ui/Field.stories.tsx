@@ -9,6 +9,7 @@ const meta = {
   component: Field,
   tags: ['autodocs'],
   argTypes: {
+    size: { control: 'inline-radio', options: ['default', 'compact'] },
     type: { control: 'select', options: ['text', 'date', 'number', 'email'] },
   },
 } satisfies Meta<typeof Field>;
@@ -39,4 +40,19 @@ export const Number: Story = {
 
 export const WithPlaceholder: Story = {
   args: { label: 'Netfang', type: 'email', placeholder: 'nafn@netfang.is' },
+};
+
+/** Smaller field used on the "Mínar upplýsingar" screen (Figma "Field / Compact"). */
+export const Compact: Story = {
+  args: { label: 'Nafn', size: 'compact', placeholder: 'Nafnið þitt' },
+};
+
+/** Dates and amounts use the monospace font (Figma "Field / Half mono"). */
+export const Mono: Story = {
+  args: {
+    label: 'Skilafrestur',
+    type: 'date',
+    mono: true,
+    defaultValue: receipt.returnDeadline ?? '',
+  },
 };

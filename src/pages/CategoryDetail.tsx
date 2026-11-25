@@ -22,7 +22,7 @@ export default function CategoryDetail() {
           <ReceiptCard key={r.id} receipt={r} />
         ))}
       </div>
-      {results.length === 0 && <p className="page-subtitle">Engar kvittanir í þessum flokki.</p>}
+      {results.length === 0 && <p className="empty-state">Engar kvittanir í þessum flokki.</p>}
     </div>
   );
 }
