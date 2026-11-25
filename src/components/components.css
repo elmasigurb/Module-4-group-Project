@@ -295,17 +295,39 @@
   white-space: nowrap;
 }
 
-/* ---------- Category tile ---------- */
+/* ---------- Category tile (folder shape, as in Figma) ---------- */
 .category-tile {
+  --folder-tab-height: 10px;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: var(--space-3);
-  min-height: 64px;
-  padding: var(--space-3);
+  min-height: 72px;
+  margin-top: var(--folder-tab-height);
+  padding: var(--space-3) var(--space-4);
   background: var(--color-surface-strong);
-  border-radius: var(--radius-sm);
+  /* Square top-left corner so the tab joins the body */
+  border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
   font-size: var(--text-sm);
+  transition: filter 0.15s;
+}
+
+/* The folder tab */
+.category-tile::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 38%;
+  max-width: 96px;
+  height: var(--folder-tab-height);
+  background: inherit;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.category-tile:hover {
+  filter: brightness(0.96);
 }
 
 .category-tile__label {
@@ -314,8 +336,9 @@
 
 @media (min-width: 900px) {
   .category-tile {
-    min-height: 96px;
-    padding: var(--space-4);
+    --folder-tab-height: 12px;
+    min-height: 100px;
+    padding: var(--space-4) var(--space-5);
   }
 }
 

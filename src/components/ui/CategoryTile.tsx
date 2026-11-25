@@ -7,7 +7,7 @@ interface CategoryTileProps {
   icon?: IconName;
 }
 
-export default function CategoryTile({ to, label, icon = 'folder' }: CategoryTileProps) {
+export default function CategoryTile({ to, label, icon = 'folder-open' }: CategoryTileProps) {
   return (
     <Link to={to} className="category-tile">
       <span className="category-tile__label">{label}</span>

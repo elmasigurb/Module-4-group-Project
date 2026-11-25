@@ -6,6 +6,7 @@ export const iconNames = [
   'bell',
   'user',
   'folder',
+  'folder-open',
   'back',
   'forward',
   'search',
