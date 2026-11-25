@@ -14,10 +14,29 @@ This page reads the variables directly, so it always shows the current values.
 ## Colors
 
 <ColorPalette>
-  <ColorItem title="Background" subtitle="--color-bg / --color-bg-desktop" colors={{ bg: 'var(--color-bg)', 'bg-desktop': 'var(--color-bg-desktop)' }} />
-  <ColorItem title="Surface" subtitle="--color-surface / --color-surface-strong" colors={{ surface: 'var(--color-surface)', 'surface-strong': 'var(--color-surface-strong)' }} />
-  <ColorItem title="Primary" subtitle="--color-primary / --color-primary-contrast" colors={{ primary: 'var(--color-primary)', 'primary-contrast': 'var(--color-primary-contrast)' }} />
-  <ColorItem title="Text" subtitle="--color-text / --color-text-muted" colors={{ text: 'var(--color-text)', 'text-muted': 'var(--color-text-muted)' }} />
+  <ColorItem
+    title="Background"
+    subtitle="--color-bg / --color-bg-desktop"
+    colors={{ bg: 'var(--color-bg)', 'bg-desktop': 'var(--color-bg-desktop)' }}
+  />
+  <ColorItem
+    title="Surface"
+    subtitle="--color-surface / --color-surface-strong"
+    colors={{ surface: 'var(--color-surface)', 'surface-strong': 'var(--color-surface-strong)' }}
+  />
+  <ColorItem
+    title="Primary"
+    subtitle="--color-primary / --color-primary-contrast"
+    colors={{
+      primary: 'var(--color-primary)',
+      'primary-contrast': 'var(--color-primary-contrast)',
+    }}
+  />
+  <ColorItem
+    title="Text"
+    subtitle="--color-text / --color-text-muted"
+    colors={{ text: 'var(--color-text)', 'text-muted': 'var(--color-text-muted)' }}
+  />
   <ColorItem title="Border" subtitle="--color-border" colors={{ border: 'var(--color-border)' }} />
 </ColorPalette>
 
@@ -45,13 +64,13 @@ Used for numbers, dates and amounts (the `.mono` class).
   sampleText="34.490 kr. · 11.08.2026"
 />
 
-| Token       | Size / line height | Use                                          |
-| ----------- | ------------------ | -------------------------------------------- |
-| `--text-xs` | 12 / 16            | Field labels, dates, nav labels              |
-| `--text-sm` | 14 / 20            | Card rows, search, amounts                   |
-| `--text-md` | 16 / 24            | Buttons, inputs, card and section titles     |
-| `--text-lg` | 24 / 32            | Page titles on mobile                        |
-| `--text-xl` | 32 / 40            | Logo (Fira Code), page titles on desktop     |
+| Token       | Size / line height | Use                                      |
+| ----------- | ------------------ | ---------------------------------------- |
+| `--text-xs` | 12 / 16            | Field labels, dates, nav labels          |
+| `--text-sm` | 14 / 20            | Card rows, search, amounts               |
+| `--text-md` | 16 / 24            | Buttons, inputs, card and section titles |
+| `--text-lg` | 24 / 32            | Page titles on mobile                    |
+| `--text-xl` | 32 / 40            | Logo (Fira Code), page titles on desktop |
 
 Weights: 400 regular, 500 medium (field labels), 600 semibold (titles, buttons).
 
@@ -60,6 +79,7 @@ Weights: 400 regular, 500 medium (field labels), 600 semibold (titles, buttons).
 The bars below are as wide as each spacing token.
 
 {['--space-1', '--space-2', '--space-3', '--space-4', '--space-5', '--space-6', '--space-7'].map((token) => (
+
   <div key={token} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)', marginBottom: 'var(--space-2)' }}>
     <code style={{ width: '7rem' }}>{token}</code>
     <div style={{ width: `var(${token})`, height: 'var(--space-4)', background: 'var(--color-primary)', borderRadius: 'var(--radius-sm)' }} />
@@ -69,6 +89,7 @@ The bars below are as wide as each spacing token.
 ## Radius
 
 {['--radius-xs', '--radius-sm', '--radius-md', '--radius-lg', '--radius-button', '--radius-card'].map((token) => (
+
   <div key={token} style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-2)', marginRight: 'var(--space-5)' }}>
     <div style={{ width: 'var(--space-7)', height: 'var(--space-7)', background: 'var(--color-surface-strong)', borderRadius: `var(${token})` }} />
     <code>{token}</code>
@@ -77,12 +98,12 @@ The bars below are as wide as each spacing token.
 
 ## Layout
 
-| Token                 | Use                                        |
-| --------------------- | ------------------------------------------ |
-| `--page-gutter`       | Side padding of content on mobile (24px)   |
-| `--nav-height`        | Height of the bottom navigation on mobile  |
-| `--sidebar-width`     | Width of the sidebar on desktop (≥ 900px)  |
-| `--content-max-width` | Max width of page content                  |
-| `--form-max-width`    | Max width of forms (`.page--narrow`)       |
+| Token                 | Use                                       |
+| --------------------- | ----------------------------------------- |
+| `--page-gutter`       | Side padding of content on mobile (24px)  |
+| `--nav-height`        | Height of the bottom navigation on mobile |
+| `--sidebar-width`     | Width of the sidebar on desktop (≥ 900px) |
+| `--content-max-width` | Max width of page content                 |
+| `--form-max-width`    | Max width of forms (`.page--narrow`)      |
 
 Breakpoints can't be CSS variables in media queries, so they are fixed: **tablet ≥ 640px**, **desktop ≥ 900px**.
